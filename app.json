@@ -1,4 +1,31 @@
 {
-  "name": "EIPDoGoodChallenge",
-  "displayName": "EIPDoGoodChallenge"
+  "expo": {
+    "name": "rn-material-kit-free",
+    "description": "React Native - Material Kit Free",
+    "slug": "rn-material-kit-free",
+    "privacy": "unlisted",
+    "sdkVersion": "36.0.0",
+    "platforms": [
+      "ios",
+      "android"
+    ],
+    "version": "1.5.0",
+    "orientation": "portrait",
+    "splash": {
+      "image": "./Images/UMDLogo.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#f01111"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android":{
+      
+    }
 }
