@@ -18,11 +18,7 @@ function CustomDrawerContent({
   const insets = useSafeArea();
   const screens = [
     "Home",
-    "Woman",
-    "Man",
-    "Kids",
-    "New Collection",
-    "Profile",
+    "About",
     "Settings",
     "Components"
   ];
@@ -31,9 +27,10 @@ function CustomDrawerContent({
       style={styles.container}
       forceInset={{ top: "always", horizontal: "never" }}
     >
+
       <Block flex={0.25} style={styles.header}>
         <TouchableWithoutFeedback
-          onPress={() => navigation.navigate("Profile")}
+          onPress={() => navigation.navigate("About")}
         >
           <Block style={styles.profile}>
             <Image source={{ uri: profile.avatar }} style={styles.avatar} />
@@ -42,6 +39,7 @@ function CustomDrawerContent({
             </Text>
           </Block>
         </TouchableWithoutFeedback>
+
         <Block row>
           <Block middle style={styles.pro}>
             <Text size={16} color="white">
@@ -57,6 +55,7 @@ function CustomDrawerContent({
           </Text>
         </Block>
       </Block>
+
       <Block flex style={{ paddingLeft: 7, paddingRight: 14 }}>
         <ScrollView
           contentContainerStyle={[
@@ -80,7 +79,8 @@ function CustomDrawerContent({
           })}
         </ScrollView>
       </Block>
-      <Block flex={0.3} style={{ paddingLeft: 7, paddingRight: 14 }}>
+
+      {/* <Block flex={0.3} style={{ paddingLeft: 7, paddingRight: 14 }}>
         <DrawerCustomItem
           title="Sign In"
           navigation={navigation}
@@ -91,7 +91,8 @@ function CustomDrawerContent({
           navigation={navigation}
           focused={state.index === 9 ? true : false}
         />
-      </Block>
+      </Block> */}
+
     </Block>
   );
 }

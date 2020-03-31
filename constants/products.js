@@ -1,6 +1,6 @@
 export default [
   {
-    title: 'Hardly Anything Takes More Coura...',
+    title: 'My name jeff...',
     image: 'https://source.unsplash.com/dS2hi__ZZMk/840x840',
     price: 180,
     horizontal: true,

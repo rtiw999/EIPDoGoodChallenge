@@ -1,9 +1,9 @@
 {
   "devToolsPort": 19002,
-  "expoServerPort": null,
-  "packagerPort": null,
-  "packagerPid": null,
-  "expoServerNgrokUrl": null,
-  "packagerNgrokUrl": null,
-  "ngrokPid": null
+  "expoServerPort": 19000,
+  "packagerPort": 19001,
+  "packagerPid": 14584,
+  "expoServerNgrokUrl": "https://e4-x3c.anonymous.eipdogoodchallenge.exp.direct",
+  "packagerNgrokUrl": "https://packager.e4-x3c.anonymous.eipdogoodchallenge.exp.direct",
+  "ngrokPid": 232
 }

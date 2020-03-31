@@ -9,6 +9,9 @@ import materialTheme from '../constants/Theme';
 const { height, width } = Dimensions.get('window');
 const iPhoneX = () => Platform.OS === 'ios' && (height === 812 || width === 812 || height === 896 || width === 896);
 
+/*
+This file is the header on the home screen. Why is it not part of CustomHomeScreen.js?
+*/
 const ChatButton = ({isWhite, style, navigation}) => (
   <TouchableOpacity style={[styles.button, style]} onPress={() => navigation.navigate('Pro')}>
     <Icon
@@ -33,8 +36,19 @@ const BasketButton = ({isWhite, style, navigation}) => (
   </TouchableOpacity>
 );
 
-const SearchButton = ({isWhite, style, navigation}) => (
-  <TouchableOpacity style={[styles.button, style]} onPress={() => navigation.navigate('Pro')}>
+const CurrentLocationButton = ({isWhite, style, navigation}) => (
+  <TouchableOpacity style={[styles.button, style]} onPress={() => navigation.navigate('SearchPage')}>
+    <Icon
+      size={16}
+      family="entypo"
+      name="magnifying-glass"
+      color={theme.COLORS[isWhite ? 'WHITE' : 'ICON']}
+    />
+  </TouchableOpacity>
+);
+
+const DesiredDestinationButton = ({isWhite, style, navigation}) => (
+  <TouchableOpacity style={[styles.button, style]} onPress={() => navigation.navigate('SearchPage')}>
     <Icon
       size={16}
       family="entypo"
@@ -50,6 +64,7 @@ class Header extends React.Component {
     return (back ? navigation.goBack() : navigation.openDrawer());
   }
 
+  //this renders whatever is on the top right of the header.
   renderRight = () => {
     const { white, title, navigation } = this.props;
 
@@ -88,7 +103,7 @@ class Header extends React.Component {
         ]);
       case 'Product':
         return ([
-          <SearchButton key='search-product' navigation={navigation} isWhite={white} />,
+          <CurrentDestinationButton key='search-product' navigation={navigation} isWhite={white} />,
           <BasketButton key='basket-product' navigation={navigation} isWhite={white} />
         ]);
       case 'Search':
@@ -106,38 +121,31 @@ class Header extends React.Component {
     }
   }
 
-  renderSearch = () => {
+  renderCurrentLoc = () => {
     const { navigation } = this.props;
     return (
       <Input
         right
         color="black"
         style={styles.search}
-        placeholder="What are you looking for?"
-        onFocus={() => navigation.navigate('Pro')}
+        placeholder="Current Location"
+        onFocus={() => navigation.navigate('SearchPage')}
         iconContent={<Icon size={16} color={theme.COLORS.MUTED} name="magnifying-glass" family="entypo" />}
       />
     )
   }
 
-  renderTabs = () => {
-    const { navigation, tabTitleLeft, tabTitleRight } = this.props;
-
+  renderDesiredDest = () => {
+    const { navigation } = this.props;
     return (
-      <Block row style={styles.tabs}>
-        <Button shadowless style={[styles.tab, styles.divider]} onPress={() => navigation.navigate('Pro')}>
-          <Block row middle>
-            <Icon name="grid" family="feather" style={{ paddingRight: 8 }} />
-            <Text size={16} style={styles.tabTitle}>{tabTitleLeft || 'Categories'}</Text>
-          </Block>
-        </Button>
-        <Button shadowless style={styles.tab} onPress={() => navigation.navigate('Pro')}>
-          <Block row middle>
-            <Icon size={16} name="camera-18" family="GalioExtra" style={{ paddingRight: 8 }} />
-            <Text size={16} style={styles.tabTitle}>{tabTitleRight || 'Best Deals'}</Text>
-          </Block>
-        </Button>
-      </Block>
+      <Input
+        right
+        color="black"
+        style={styles.search}
+        placeholder="Desired Destination"
+        onFocus={() => navigation.navigate('SearchPage')}
+        iconContent={<Icon size={16} color={theme.COLORS.MUTED} name="magnifying-glass" family="entypo" />}
+      />
     )
   }
 
@@ -146,8 +154,8 @@ class Header extends React.Component {
     if (search || tabs) {
       return (
         <Block center>
-          {search ? this.renderSearch() : null}
-          {tabs ? this.renderTabs() : null}
+          {search ? this.renderCurrentLoc() : null}
+          {search ? this.renderDesiredDest() : null}
         </Block>
       )
     }
