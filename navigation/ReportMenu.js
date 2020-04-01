@@ -3,8 +3,8 @@ import { TouchableWithoutFeedback, ScrollView, StyleSheet, Image } from "react-n
 import { Block, Text, theme } from "galio-framework";
 import { useSafeArea } from "react-native-safe-area-context";
 
-import { Icon, Drawer as DrawerCustomItem } from '../components/';
-import { Images, materialTheme } from "../constants/";
+import { Icon, Drawer as DrawerCustomItem } from '../components';
+import { Images, materialTheme } from "../constants";
 
 
 function CustomDrawerContent({

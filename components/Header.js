@@ -9,54 +9,40 @@ import materialTheme from '../constants/Theme';
 const { height, width } = Dimensions.get('window');
 const iPhoneX = () => Platform.OS === 'ios' && (height === 812 || width === 812 || height === 896 || width === 896);
 
-/*
-This file is the header on the home screen. Why is it not part of CustomHomeScreen.js?
-*/
-const ChatButton = ({isWhite, style, navigation}) => (
-  <TouchableOpacity style={[styles.button, style]} onPress={() => navigation.navigate('Pro')}>
+//this button should open the drawer where the user can click a button that lets them draw on the map
+const ReportButton = ({isWhite, style, navigation}) => (
+  <TouchableOpacity style={[styles.button, style]} onPress={() => navigation.navigate('Home')}>
     <Icon
-      family="GalioExtra"
-      size={16}
-      name="chat-33"
-      color={theme.COLORS[isWhite ? 'WHITE' : 'ICON']}
-    />
-    <Block middle style={styles.notify} />
-  </TouchableOpacity>
-);
-
-const BasketButton = ({isWhite, style, navigation}) => (
-  <TouchableOpacity style={[styles.button, style]} onPress={() => navigation.navigate('Pro')}>
-    <Icon
-      family="GalioExtra"
-      size={16}
-      name="basket-simple"
-      color={theme.COLORS[isWhite ? 'WHITE' : 'ICON']}
-    />
-    <Block middle style={styles.notify} />
-  </TouchableOpacity>
-);
-
-const CurrentLocationButton = ({isWhite, style, navigation}) => (
-  <TouchableOpacity style={[styles.button, style]} onPress={() => navigation.navigate('SearchPage')}>
-    <Icon
-      size={16}
-      family="entypo"
-      name="magnifying-glass"
+      family="MaterialIcons"
+      size={20}
+      name="report"
       color={theme.COLORS[isWhite ? 'WHITE' : 'ICON']}
     />
   </TouchableOpacity>
 );
 
-const DesiredDestinationButton = ({isWhite, style, navigation}) => (
-  <TouchableOpacity style={[styles.button, style]} onPress={() => navigation.navigate('SearchPage')}>
-    <Icon
-      size={16}
-      family="entypo"
-      name="magnifying-glass"
-      color={theme.COLORS[isWhite ? 'WHITE' : 'ICON']}
-    />
-  </TouchableOpacity>
-);
+
+// const CurrentLocationSearch = ({isWhite, style, navigation}) => (
+//   <TouchableOpacity style={[styles.button, style]} onPress={() => navigation.navigate('SearchPage')}>
+//     <Icon
+//       size={16}
+//       family="entypo"
+//       name="magnifying-glass"
+//       color={theme.COLORS[isWhite ? 'WHITE' : 'ICON']}
+//     />
+//   </TouchableOpacity>
+// );
+
+// const DesiredDestinationSearch = ({isWhite, style, navigation}) => (
+//   <TouchableOpacity style={[styles.button, style]} onPress={() => navigation.navigate('SearchPage')}>
+//     <Icon
+//       size={16}
+//       family="entypo"
+//       name="magnifying-glass"
+//       color={theme.COLORS[isWhite ? 'WHITE' : 'ICON']}
+//     />
+//   </TouchableOpacity>
+// );
 
 class Header extends React.Component {
   handleLeftPress = () => {
@@ -70,54 +56,13 @@ class Header extends React.Component {
 
     if (title === 'Title') {
       return [
-        <ChatButton key='chat-title' navigation={navigation} isWhite={white} />,
-        <BasketButton key='basket-title' navigation={navigation} isWhite={white} />
+        <ReportButton key='report-title' navigation={navigation} isWhite={white} />,
+        
       ]
-    }
-
-    switch (title) {
-      case 'Home':
-        return ([
-          <ChatButton key='chat-home' navigation={navigation} isWhite={white} />,
-          <BasketButton key='basket-home' navigation={navigation} isWhite={white} />
-        ]);
-      case 'Deals':
-        return ([
-          <ChatButton key='chat-categories' navigation={navigation} />,
-          <BasketButton key='basket-categories' navigation={navigation} />
-        ]);
-      case 'Categories':
-        return ([
-          <ChatButton key='chat-categories' navigation={navigation} isWhite={white} />,
-          <BasketButton key='basket-categories' navigation={navigation} isWhite={white} />
-        ]);
-      case 'Category':
-        return ([
-          <ChatButton key='chat-deals' navigation={navigation} isWhite={white} />,
-          <BasketButton key='basket-deals' navigation={navigation} isWhite={white} />
-        ]);
-      case 'Profile':
-        return ([
-          <ChatButton key='chat-profile' navigation={navigation} isWhite={white} />,
-          <BasketButton key='basket-deals' navigation={navigation} isWhite={white} />
-        ]);
-      case 'Product':
-        return ([
-          <CurrentDestinationButton key='search-product' navigation={navigation} isWhite={white} />,
-          <BasketButton key='basket-product' navigation={navigation} isWhite={white} />
-        ]);
-      case 'Search':
-        return ([
-          <ChatButton key='chat-search' navigation={navigation} isWhite={white} />,
-          <BasketButton key='basket-search' navigation={navigation} isWhite={white} />
-        ]);
-      case 'Settings':
-        return ([
-          <ChatButton key='chat-search' navigation={navigation} isWhite={white} />,
-          <BasketButton key='basket-search' navigation={navigation} isWhite={white} />
-        ]);
-      default:
-        break;
+    } else if (title === "Home") {
+      return [
+        <ReportButton key='report-home' navigation={navigation} isWhite={white} />,
+      ]
     }
   }
 
@@ -129,8 +74,7 @@ class Header extends React.Component {
         color="black"
         style={styles.search}
         placeholder="Current Location"
-        onFocus={() => navigation.navigate('SearchPage')}
-        iconContent={<Icon size={16} color={theme.COLORS.MUTED} name="magnifying-glass" family="entypo" />}
+        iconContent={<Icon size={16} color={theme.COLORS.MUTED} name="direction" family="entypo" />}
       />
     )
   }
@@ -143,19 +87,28 @@ class Header extends React.Component {
         color="black"
         style={styles.search}
         placeholder="Desired Destination"
-        onFocus={() => navigation.navigate('SearchPage')}
-        iconContent={<Icon size={16} color={theme.COLORS.MUTED} name="magnifying-glass" family="entypo" />}
+        iconContent={<Icon size={16} color={theme.COLORS.MUTED} name="direction" family="entypo" />}
       />
     )
   }
 
+  renderGoButton = () => {
+    return (
+      <Button shadowless capitalize style={styles.goButton} color="info" size="small">
+        Go
+      </Button>
+    )
+  }
+
   renderHeader = () => {
-    const { search, tabs } = this.props;
-    if (search || tabs) {
+    const { search } = this.props;
+    if (search) {
       return (
         <Block center>
           {search ? this.renderCurrentLoc() : null}
           {search ? this.renderDesiredDest() : null}
+          {search ? this.renderGoButton() : null}
+
         </Block>
       )
     }
@@ -201,6 +154,13 @@ const styles = StyleSheet.create({
   button: {
     padding: 12,
     position: 'relative',
+  },
+  goButton: {
+    height: 40,
+    width: 40,
+    marginHorizontal: 16,
+    borderWidth: 1,
+    borderRadius: 3,
   },
   title: {
     width: '100%',
