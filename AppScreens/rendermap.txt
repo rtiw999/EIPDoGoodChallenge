@@ -1,0 +1,16 @@
+// Test to render map!
+  render() {
+    return (
+      <MapView style={styles.mapStyle} />
+    );
+  }
+}
+
+Try to run that. If it works, copy/paste whatever you have for the map.
+
+mapStyle: {
+    width: Dimensions.get('window').width,
+    height: Dimensions.get('window').height,
+  },  
+
+  Add this to your StyleSheet.
