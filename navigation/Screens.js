@@ -5,11 +5,11 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 
 import { Block, Text, theme } from "galio-framework";
 
-import ComponentsScreen from '../screens/Components';
+
 import HomeScreen from '../AppScreens/CustomHomeScreen';
 import OnboardingScreen from '../screens/Onboarding';
 import AboutScreen from '../AppScreens/About';
-//import SearchPage from '../AppScreens/SearchPage';
+import ReportScreen from '../AppScreens/ReportScreen';
 import SettingsScreen from '../AppScreens/Settings';
 
 import CustomDrawerContent from './Menu';
@@ -74,21 +74,6 @@ function SettingsStack(props) {
   );
 }
 
-function ComponentsStack(props) {
-  return (
-    <Stack.Navigator mode="card" headerMode="screen">
-      <Stack.Screen
-        name="Components"
-        component={ComponentsScreen}
-        options={{
-          header: ({ navigation, scene }) => (
-            <Header title="Components" scene={scene} navigation={navigation} />
-          )
-        }}
-      />
-    </Stack.Navigator>
-  );
-}
 
 function HomeStack(props) {
   return (
@@ -104,19 +89,35 @@ function HomeStack(props) {
               navigation={navigation}
               scene={scene}
             />
-          )
+          ),
+          
+        }}
+      />
+      <Stack.Screen 
+        name="Report"
+        component={ReportScreen}
+        options={{
+          header: ({ navigation, scene }) => (
+            <Header 
+              back
+              navigation={navigation}
+              scene={scene}
+            />
+          ),
+          
         }}
       />
     </Stack.Navigator>
   );
 }
 
-function AppStack(props) {
+export default function AppStack(props) {
   return (
     <Drawer.Navigator
       style={{ flex: 1 }}
       drawerContent={props => (
         <CustomDrawerContent {...props} profile={profile} />
+        
       )}
       drawerStyle={{
         backgroundColor: "white",
@@ -165,9 +166,10 @@ function AppStack(props) {
           drawerIcon: ({ focused }) => (
             <Icon
               size={16}
-              name="circle-10"
-              family="GalioExtra"
+              name="emoji-happy"
+              family="Entypo"
               color={focused ? "white" : materialTheme.COLORS.MUTED}
+              
             />
           )
         }}
@@ -187,38 +189,23 @@ function AppStack(props) {
           )
         }}
       />
-      <Drawer.Screen
-        name="Components"
-        component={ComponentsStack}
-        options={{
-          drawerIcon: ({ focused }) => (
-            <Icon
-              size={16}
-              name="md-switch"
-              family="ionicon"
-              color={focused ? "white" : materialTheme.COLORS.MUTED}
-              style={{ marginRight: 2, marginLeft: 2 }}
-            />
-          )
-        }}
-      />
-     
     </Drawer.Navigator>
+
   );
 }
 
-export default function OnboardingStack(props) {
-  return (
-    <Stack.Navigator mode="card" headerMode="none">
-      <Stack.Screen
-        name="Onboarding"
-        component={OnboardingScreen}
-        option={{
-          headerTransparent: true
-        }}
-      />
-      <Stack.Screen name="App" component={AppStack} />
-    </Stack.Navigator>
-  );
-}
+// export default function OnboardingStack(props) {
+//   return (
+//     <Stack.Navigator mode="card" headerMode="none">
+//       <Stack.Screen
+//         name="Onboarding"
+//         component={OnboardingScreen}
+//         option={{
+//           headerTransparent: true
+//         }}
+//       />
+//       <Stack.Screen name="App" component={AppStack} />
+//     </Stack.Navigator>
+//   );
+// }
 

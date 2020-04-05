@@ -23,56 +23,21 @@ class DrawerItem extends React.Component {
         return (
           <Icon
             size={16}
-            name="shop"
-            family="GalioExtra"
+            name="home"
+            family="Feather"
             color={focused ? "white" : materialTheme.COLORS.MUTED}
           />
         );
-      case "Woman":
+      case "About":
         return (
           <Icon
             size={16}
-            name="md-woman"
-            family="ionicon"
+            name="emoji-happy"
+            family="Entypo"
             color={focused ? "white" : materialTheme.COLORS.MUTED}
           />
         );
-      case "Man":
-        return (
-          <Icon
-            size={16}
-            name="man"
-            family="entypo"
-            color={focused ? "white" : materialTheme.COLORS.MUTED}
-          />
-        );
-      case "Kids":
-        return (
-          <Icon
-            size={16}
-            name="baby"
-            family="GalioExtra"
-            color={focused ? "white" : materialTheme.COLORS.MUTED}
-          />
-        );
-      case "New Collection":
-        return (
-          <Icon
-            size={16}
-            name="grid-on"
-            family="material"
-            color={focused ? "white" : materialTheme.COLORS.MUTED}
-          />
-        );
-      case "Profile":
-        return (
-          <Icon
-            size={16}
-            name="circle-10"
-            family="GalioExtra"
-            color={focused ? "white" : materialTheme.COLORS.MUTED}
-          />
-        );
+      
       case "Settings":
         return (
           <Icon
@@ -82,33 +47,7 @@ class DrawerItem extends React.Component {
             color={focused ? "white" : materialTheme.COLORS.MUTED}
           />
         );
-      case "Components":
-        return (
-          <Icon
-            size={16}
-            name="md-switch"
-            family="ionicon"
-            color={focused ? "white" : materialTheme.COLORS.MUTED}
-          />
-        );
-      case "Sign In":
-        return (
-          <Icon
-            size={16}
-            name="ios-log-in"
-            family="ionicon"
-            color={focused ? "white" : materialTheme.COLORS.MUTED}
-          />
-        );
-      case "Sign Up":
-        return (
-          <Icon
-            size={16}
-            name="md-person-add"
-            family="ionicon"
-            color={focused ? "white" : materialTheme.COLORS.MUTED}
-          />
-        );
+      
       default:
         return null;
     }

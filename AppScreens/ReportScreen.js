@@ -32,7 +32,12 @@ export default class Home extends React.Component {
 
   render() {
     return (
-      <MapView style={styles.mapStyle} />
+      <Block middle >
+        <Button shadowless capitalize style={styles.button} color="info" size="small">
+        Report Something
+        </Button>
+      </Block>
+      
     );
   }
 }
@@ -85,8 +90,11 @@ const styles = StyleSheet.create({
     width: width - theme.SIZES.BASE * 2,
     paddingVertical: theme.SIZES.BASE * 2,
   },
-  mapStyle: {
-    width: Dimensions.get('window').width,
-    height: Dimensions.get('window').height,
+  button: {
+    height: 40,
+    width: 200,
+    marginHorizontal: 16,
+    borderWidth: 1,
+    borderRadius: 3,
   },
 });

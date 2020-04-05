@@ -20,7 +20,6 @@ function CustomDrawerContent({
     "Home",
     "About",
     "Settings",
-    "Components"
   ];
   return (
     <Block

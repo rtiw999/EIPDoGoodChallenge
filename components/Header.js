@@ -11,44 +11,22 @@ const iPhoneX = () => Platform.OS === 'ios' && (height === 812 || width === 812 
 
 //this button should open the drawer where the user can click a button that lets them draw on the map
 const ReportButton = ({isWhite, style, navigation}) => (
-  <TouchableOpacity style={[styles.button, style]} onPress={() => navigation.navigate('Home')}>
+  <TouchableOpacity style={[styles.button, style]} onPress={() => navigation.navigate('Report')}>
     <Icon
-      family="MaterialIcons"
-      size={20}
-      name="report"
+      family="EvilIcons"
+      size={30}
+      name="exclamation"
       color={theme.COLORS[isWhite ? 'WHITE' : 'ICON']}
     />
   </TouchableOpacity>
 );
-
-
-// const CurrentLocationSearch = ({isWhite, style, navigation}) => (
-//   <TouchableOpacity style={[styles.button, style]} onPress={() => navigation.navigate('SearchPage')}>
-//     <Icon
-//       size={16}
-//       family="entypo"
-//       name="magnifying-glass"
-//       color={theme.COLORS[isWhite ? 'WHITE' : 'ICON']}
-//     />
-//   </TouchableOpacity>
-// );
-
-// const DesiredDestinationSearch = ({isWhite, style, navigation}) => (
-//   <TouchableOpacity style={[styles.button, style]} onPress={() => navigation.navigate('SearchPage')}>
-//     <Icon
-//       size={16}
-//       family="entypo"
-//       name="magnifying-glass"
-//       color={theme.COLORS[isWhite ? 'WHITE' : 'ICON']}
-//     />
-//   </TouchableOpacity>
-// );
 
 class Header extends React.Component {
   handleLeftPress = () => {
     const { back, navigation } = this.props;
     return (back ? navigation.goBack() : navigation.openDrawer());
   }
+  
 
   //this renders whatever is on the top right of the header.
   renderRight = () => {
@@ -61,7 +39,7 @@ class Header extends React.Component {
       ]
     } else if (title === "Home") {
       return [
-        <ReportButton key='report-home' navigation={navigation} isWhite={white} />,
+        <ReportButton key='report-home' navigation={navigation} isWhite={white}/>,
       ]
     }
   }
@@ -75,6 +53,7 @@ class Header extends React.Component {
         style={styles.search}
         placeholder="Current Location"
         iconContent={<Icon size={16} color={theme.COLORS.MUTED} name="direction" family="entypo" />}
+        autoCompleteType="street-address"
       />
     )
   }
@@ -88,6 +67,7 @@ class Header extends React.Component {
         style={styles.search}
         placeholder="Desired Destination"
         iconContent={<Icon size={16} color={theme.COLORS.MUTED} name="direction" family="entypo" />}
+        autoCompleteType="street-address"
       />
     )
   }

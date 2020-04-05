@@ -4,43 +4,30 @@ import { Block, Text, theme } from 'galio-framework';
 import { LinearGradient } from 'expo-linear-gradient';
 
 import { Icon } from '../components';
-import { Images, materialTheme } from '../constants';
-import UMDLogo from '../Images/UMDLogo.png';
+import { materialTheme } from '../constants';
+import TeamPic from '../Images/UMDLogo.png';
+//import TeamPicture from '..Images/TeamPic.PNG'
 import { HeaderHeight } from "../constants/utils";
 
 const { width, height } = Dimensions.get('screen');
 const thumbMeasure = (width - 48 - 32) / 3;
-
+//const TeamPic = require('E:/Programming Projects/EIPDoGoodChallenge/Images/TeamPic.PNG');
 export default class Profile extends React.Component {
   render() {
     return (
       <Block flex style={styles.profile}>
         <Block flex>
           <ImageBackground
-            source={UMDLogo}
+            source={TeamPic}
             style={styles.profileContainer}
             imageStyle={styles.profileImage}>
-            <Block flex style={styles.profileDetails}>
-              <Block style={styles.profileTexts}>
-                <Text color="white" size={28} style={{ paddingBottom: 8 }}>TerPaths</Text>
-                <Block row space="between">
-                  <Block>
-                    <Text color={theme.COLORS.MUTED} size={16}>
-                      <Icon name="map-marker" family="font-awesome" color={theme.COLORS.MUTED} size={16} />
-                      {` `} University of Maryland: College Park
-                      </Text>
-                  </Block>
-                </Block>
-              </Block>
-              <LinearGradient colors={['rgba(0,0,0,0)', 'rgba(0,0,0,1)']} style={styles.gradient} />
-            </Block>
           </ImageBackground>
         </Block>
 
         <Block flex style={styles.options}>
           <ScrollView showsVerticalScrollIndicator={false}>
             <Block center style={{ padding: theme.SIZES.BASE, }}>
-                <Text bold h5>About Us</Text>
+                <Text bold h5>About TerPaths</Text>
             </Block>
 
             <Block>
